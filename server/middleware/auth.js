@@ -7,8 +7,8 @@ const verifyToken = (req, res, next) => {
   console.log('verifyToken ~ token', token);
 
   if (!token) {
-return res.sendStatus(401);
-}
+    return res.sendStatus(401);
+  }
   try {
     const decoded = jwt.verify(token, config.env.ACCESS_TOKEN_SECRET);
     req.userId    = decoded.id;
