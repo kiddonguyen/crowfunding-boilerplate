@@ -1,33 +1,29 @@
-require("dotenv").config();
-const jwt = require("jsonwebtoken");
-const express = require("express");
-const app = express();
+const config  = require('dotenv').config();
+const jwt     = require('jsonwebtoken');
+const express = require('express');
+const app     = express();
 app.use(express.json());
-const fs = require("fs");
-const verifyToken = require("./middleware/auth");
-const rawdata = fs.readFileSync("db.json");
-const database = JSON.parse(rawdata);
-let users = database.users;
-const cors = require("cors");
-const bcrypt = require("bcrypt");
+const fs          = require('fs');
+const verifyToken = require('./middleware/auth');
+const rawdata     = fs.readFileSync('db.json');
+const database    = JSON.parse(rawdata);
+let users         = database.users;
+const cors        = require('cors');
+const bcrypt      = require('bcrypt');
 app.use(cors());
 const generateTokens = (payload) => {
   const { id, name } = payload;
-  const accessToken = jwt.sign({ id, name }, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: "5m",
+  const accessToken  = jwt.sign({ id, name }, config.env.ACCESS_TOKEN_SECRET, {
+    expiresIn: '5m',
   });
-  const refreshToken = jwt.sign(
-    { id, name },
-    process.env.REFRESH_TOKEN_SECRET,
-    {
-      expiresIn: "48h",
-    }
-  );
+  const refreshToken = jwt.sign({ id, name }, config.env.REFRESH_TOKEN_SECRET, {
+    expiresIn: '48h',
+  });
 
   return { accessToken, refreshToken };
 };
 function updateRefreshToken(name, refreshToken) {
-  console.log("updateRefreshToken ~ name", name);
+  console.log('updateRefreshToken ~ name', name);
   users = users.map((user) => {
     if (user.name === name) {
       return {
@@ -37,28 +33,28 @@ function updateRefreshToken(name, refreshToken) {
     }
     return user;
   });
-  fs.writeFileSync("db.json", JSON.stringify({ ...database, users }));
+  fs.writeFileSync('db.json', JSON.stringify({ ...database, users }));
 }
-app.get("/me", verifyToken, (req, res) => {
-  const user = users.find((user) => {
-    return user.id === req.userId;
-  });
-  if (!user) return res.sendStatus(401);
+app.get('/me', verifyToken, (req, res) => {
+  const user = users.find((user) => user.id === req.userId);
+  if (!user) {
+    return res.sendStatus(401);
+  }
   res.json(user);
 });
-app.post("/auth/login", (req, res) => {
+app.post('/auth/login', (req, res) => {
   const email = req.body.email;
-  const user = users.find((user) => {
-    return user.email === email;
-  });
-  if (!user) return res.sendStatus(401);
+  const user  = users.find((user) => user.email === email);
+  if (!user) {
+    return res.sendStatus(401);
+  }
   const dbPassword = user.password;
   bcrypt.compare(req.body.password, dbPassword, (err, hash) => {
     if (err || !hash) {
       res.status(403).json({
         statusCode: 403,
         error: {
-          message: "Password does not match",
+          message: 'Password does not match',
         },
       });
     }
@@ -69,15 +65,17 @@ app.post("/auth/login", (req, res) => {
   });
 });
 
-app.post("/token", (req, res) => {
+app.post('/token', (req, res) => {
   const refreshToken = req.body.refreshToken;
-  if (!refreshToken) return res.sendStatus(401);
-  const user = users.find((user) => {
-    return user.refreshToken === refreshToken;
-  });
-  if (!user) return res.sendStatus(403);
+  if (!refreshToken) {
+    return res.sendStatus(401);
+  }
+  const user = users.find((user) => user.refreshToken === refreshToken);
+  if (!user) {
+    return res.sendStatus(403);
+  }
   try {
-    jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+    jwt.verify(refreshToken, config.env.REFRESH_TOKEN_SECRET);
     const tokens = generateTokens(user);
     updateRefreshToken(user.name, tokens.refreshToken);
     res.json(tokens);
@@ -87,13 +85,11 @@ app.post("/token", (req, res) => {
   }
 });
 
-app.post("/auth/register", (req, res) => {
+app.post('/auth/register', (req, res) => {
   const { name, password, email, permissions } = req.body;
-  const user = users.find((user) => {
-    return user.email === email;
-  });
+  const user = users.find((user) => user.email === email);
   if (user) {
-    return res.sendStatus(409).json({ error: "User already exists" });
+    return res.sendStatus(409).json({ error: 'User already exists' });
   }
   bcrypt.hash(password, 10, (err, hash) => {
     if (err) {
@@ -107,17 +103,17 @@ app.post("/auth/register", (req, res) => {
       refreshToken: null,
       permissions,
     });
-    fs.writeFileSync("db.json", JSON.stringify({ ...database, users }));
+    fs.writeFileSync('db.json', JSON.stringify({ ...database, users }));
     res.sendStatus(201);
   });
 });
 
-app.delete("/logout", verifyToken, (req, res) => {
+app.delete('/logout', verifyToken, (req, res) => {
   const user = users.find((user) => user.id === req.userId);
-  updateRefreshToken(user.name, "");
+  updateRefreshToken(user.name, '');
   res.sendStatus(204);
 });
-app.get("/demo", (req, res) => {
-  res.json({ message: "Hello from server" });
+app.get('/demo', (req, res) => {
+  res.json({ message: 'Hello from server' });
 });
-app.listen(5000, () => console.log("Server auth started on port 5000"));
+app.listen(5000, () => console.log('Server auth started on port 5000'));
