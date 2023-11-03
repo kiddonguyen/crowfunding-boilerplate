@@ -152,7 +152,7 @@ module.exports = {
     'max-params': [2, 5],
     'max-statements': 0,
     'no-bitwise': 0,
-    'no-plusplus': 2,
+    // 'no-plusplus': 2,
     'react/display-name': 0,
     'react/jsx-sort-props': 0,
     // 'react/jsx-uses-react': 2,
@@ -163,7 +163,7 @@ module.exports = {
     'react/no-unknown-property': 2,
     'react/prop-types': 'warn',
     'react/react-in-jsx-scope': 'off',
-    'react/self-closing-comp': 1,
+    // 'react/self-closing-comp': 1,
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
   },
 };
