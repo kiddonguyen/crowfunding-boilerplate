@@ -3,7 +3,7 @@ import DashboardSearch from './DashboardSearch';
 import DashboardFund from './DashboardFund';
 const DashboardTopbar = () => (
   <div className="flex items-center justify-between mb-8">
-    <div className="flex items-center gap-x-10">
+    <div className="flex items-center gap-x-10 ml-[14px]">
       <img srcSet="/logo.png 2x" alt="Crowfunding" title="Crowfunding" />
       <div className="w-full max-w-[458px]">
         <DashboardSearch />

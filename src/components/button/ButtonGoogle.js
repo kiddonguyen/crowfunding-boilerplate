@@ -17,5 +17,5 @@ ButtonGoogle.propTypes = {
   onClick: PropTypes.func,
 };
 export default withErrorBoundary(ButtonGoogle, {
-  FallbackComponent: <ErrorComponent />,
+  FallbackComponent: ErrorComponent,
 });

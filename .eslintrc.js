@@ -82,7 +82,7 @@ module.exports = {
     'no-new-func': 2,
     'no-new-wrappers': 2,
     'no-octal': 2,
-    'arrow-body-style': ['warn', 'as-needed'],
+    // 'arrow-body-style': ['warn', 'as-needed'],
     'no-octal-escape': 2,
     'no-param-reassign': 2,
     'no-process-env': 2,

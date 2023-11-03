@@ -28,7 +28,7 @@ module.exports = {
         darkRed: '#422C32',
       },
       boxShadow: {
-        primary: '10px 10px 20px 0px rgba(218, 213, 213, 0.15)',
+        sdprimary: '10px 10px 20px 0px rgba(218, 213, 213, 0.15)',
       },
     },
   },

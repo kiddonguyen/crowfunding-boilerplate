@@ -28,7 +28,7 @@ const Button = ({
 };
 
 Button.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
   isLoading: PropTypes.bool,
