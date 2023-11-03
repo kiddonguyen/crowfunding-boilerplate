@@ -1,55 +1,62 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import { Button } from 'components/button';
+import { ButtonGoogle } from 'components/button/';
 import { Checkbox } from 'components/checkbox';
 import FormGroup from 'components/common/FormGroup';
+import { IconEyeToggle } from 'components/icons';
 import { Input } from 'components/input';
 import Label from 'components/label/Label';
+import useToggleValue from 'hooks/useToggleValue';
 import LayoutAuthentication from 'layout/LayoutAuthentication';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import * as yup from 'yup';
+const schema     = yup.object({
+  name: yup.string().required('This field is required'),
+  email: yup
+    .string()
+    .email('Invalid email address')
+    .required('This field is required'),
+  password: yup
+    .string()
+    .required('This field is required')
+    .min(8, 'Password must be at least 8 characters'),
+});
 const SignUpPage = () => {
   const {
     handleSubmit,
     control,
-    // eslint-disable-next-line no-unused-vars
-    formState: { isValid, isSubmitting },
-  } = useForm({});
-  const handleSignUp                = (values) => {
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+    mode: 'onSubmit',
+  });
+  const { value: acceptTerm, handleToggleValue: handleToggleTerm }       = useToggleValue();
+  const { value: showPassword, handleToggleValue: handleTogglePassword } =
+    useToggleValue();
+  const handleSignUp                                                     = (values) => {
     console.log(values);
-  };
-  const [acceptTerm, setAcceptTerm] = useState(false);
-  const handleToggleTerm            = () => {
-    setAcceptTerm(!acceptTerm);
   };
   return (
     <LayoutAuthentication heading="Sign Up">
-      <p className="text-center lg:text-sm font-medium text-xs font-normal text-text3 lg:mb-8 mb-6">
+      <p className="text-center lg:text-sm font-medium text-xs text-text3 lg:mb-8 mb-6">
         Already have an account?{' '}
         <Link to="sign-in" className="text-primary font-medium underline">
           Sign in
         </Link>
       </p>
-      <button className="flex items-center gap-x-3 w-full justify-center py-4 border border-strock rounded-xl mb-5">
-        <img srcSet="/icon-google.png 2x" alt="Google" title="Google" />
-        <span className="text-text2 text-base font-semibold">
-          Sign up with Google
-        </span>
-      </button>
-      <p className="text-center text-xs lg:text-sm font-normal mb-4 lg:mb-8 text-text2">
+      <ButtonGoogle text="Sign up with Google" />
+      <p className="text-center text-xs lg:text-sm font-normal mb-4 lg:mb-8 text-text2 dark:text-white">
         Or sign up with email
       </p>
       <form onSubmit={handleSubmit(handleSignUp)}>
         <FormGroup>
           <Label htmlFor="name">Fullname *</Label>
-          <Input control={control} name="name" placeholder="John Doe" />
-        </FormGroup>
-        <FormGroup>
-          <Label htmlFor="email">Email *</Label>
           <Input
             control={control}
-            name="email"
-            placeholder="example@gmail.com"
-            type="email"
+            name="name"
+            placeholder="John Doe"
+            error={errors.name?.message}
           />
         </FormGroup>
         <FormGroup>
@@ -59,6 +66,7 @@ const SignUpPage = () => {
             name="email"
             placeholder="example@gmail.com"
             type="email"
+            error={errors.email?.message}
           />
         </FormGroup>
         <FormGroup>
@@ -67,12 +75,15 @@ const SignUpPage = () => {
             control={control}
             name="password"
             placeholder="Create a password"
-            type="password"
-          />
+            type={showPassword ? 'text' : 'password'}
+            error={errors.password?.message}
+          >
+            <IconEyeToggle open={showPassword} onClick={handleTogglePassword} />
+          </Input>
         </FormGroup>
         <div className="flex items-start gap-x-5 mb-5">
           <Checkbox name="term" checked={acceptTerm} onClick={handleToggleTerm}>
-            <p className="text-sm text-text2 flex-1">
+            <p className="lg:text-sm text-text2 flex-1 text-xs dark:text-text3">
               I agree to the{' '}
               <span className="text-secondary underline">Terms of Use</span> and
               have read and understand the{' '}

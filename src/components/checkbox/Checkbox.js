@@ -6,15 +6,17 @@ const Checkbox     = ({ name, checked = false, onClick = () => {}, children }) =
   <div className="flex items-start justify-center gap-x-5">
     <div
       className={`inline-flex items-center justify-center p-1 w-5 h-5 text-white rounded border cursor-pointer ${
-        checked ? 'bg-primary border-primary' : 'border-strock'
+        checked
+          ? 'bg-primary border-primary'
+          : 'border-strock dark:border-text3'
       }`}
       onClick={onClick}
     >
       <input type="checkbox" className="hidden" name={name} />
-      <span>
+      <span className={`${checked ? '' : 'opacity-0 invisible'}`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="none"
+          fill="currentColor"
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
@@ -29,7 +31,10 @@ const Checkbox     = ({ name, checked = false, onClick = () => {}, children }) =
       </span>
     </div>
     {children && (
-      <label className="font-medium text-text3 cursor-pointer" onClick={onClick}>
+      <label
+        className="font-medium text-text3 cursor-pointer"
+        onClick={onClick}
+      >
         {children}
       </label>
     )}
@@ -39,6 +44,6 @@ Checkbox.propTypes = {
   name: PropTypes.string,
   checked: PropTypes.bool,
   onClick: PropTypes.func,
-  children: PropTypes.any
+  children: PropTypes.any,
 };
 export default Checkbox;
