@@ -2,6 +2,7 @@ import ErrorComponent from 'components/common/ErrorComponent';
 import PropTypes from 'prop-types';
 import { withErrorBoundary } from 'react-error-boundary';
 import { useController } from 'react-hook-form';
+import classNames from 'utils/classNames';
 const Input = (props) => {
   const {
     control,
@@ -23,12 +24,13 @@ const Input = (props) => {
         id={name}
         type={type}
         // thay đổi border color sang error nếu validate lỗi
-        className={`w-full py-4 px-6 border bg-transparent rounded-xl text-sm font-medium
-        text-text1 placeholder:text-text4 dark:placeholder:text-text2 dark:text-white ${
+        className={classNames(
+          'w-full py-4 px-6 border bg-transparent rounded-xl text-sm font-medium text-text1 placeholder:text-text4 dark:placeholder:text-text2 dark:text-white',
           error.length > 0
             ? 'border-error text-error'
-            : 'border-strock dark:border-darkStrock text-text1'
-        } ${children ? 'pr-16' : ''}`}
+            : 'border-strock dark:border-darkStrock text-text1',
+          children ? 'pr-16' : '',
+        )}
         placeholder={error.length <= 0 ? placeholder : ''}
         {...rest}
         {...field}

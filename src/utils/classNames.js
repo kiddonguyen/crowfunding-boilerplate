@@ -3,5 +3,6 @@ export default function classNames(...args) {
     if (typeof val === 'string') {
       return acc.concat(val.split(' '));
     }
-  });
+    return acc.concat(Object.values(val));
+  }, []).join(" ");
 }
