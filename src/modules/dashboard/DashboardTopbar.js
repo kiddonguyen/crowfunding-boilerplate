@@ -11,7 +11,9 @@ const DashboardTopbar = () => (
     </div>
     <div className="flex items-center gap-x-10 flex-1 justify-end">
       <DashboardFund></DashboardFund>
-      <Button className="bg-secondary text-white px-7" type='button'>Start a campaign</Button>
+      <Button className="bg-secondary text-white px-7" type="button">
+        Start a campaign
+      </Button>
       <img
         srcSet="/logo.png 2x"
         alt="Avatar"

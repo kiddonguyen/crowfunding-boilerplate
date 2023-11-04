@@ -18,7 +18,7 @@ const Button = ({
       className={classNames(
         'text-white p-4 text-base font-semibold rounded-xl flex justify-center items-center min-h-[56px]',
         isLoading ? 'opacity-50' : '',
-        className
+        className,
       )}
       {...rest}
     >
