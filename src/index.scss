@@ -23,7 +23,7 @@ input:focus + .error-input {
   .ql-toolbar.ql-snow {
     @apply bg-text4 bg-opacity-10 border-none py-3 px-5 inline-block;
   }
-  
+
   .ql-container.ql-snow,
   .ql-editor {
     @apply border-none font-primary text-sm;
@@ -33,8 +33,12 @@ input:focus + .error-input {
     .ql-blank {
       &::before {
         font-style: normal;
-        @apply text-sm not-italic text-text4
+        @apply text-sm not-italic text-text4;
       }
     }
   }
+}
+
+.shadow-1{
+  box-shadow: 4px 4px 8px 0px rgba(226, 226, 226, 0.20), -4px 4px 8px 0px rgba(226, 226, 226, 0.20);
 }
