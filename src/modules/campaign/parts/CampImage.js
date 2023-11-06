@@ -1,7 +1,7 @@
-import ErrorComponent from 'components/common/ErrorComponent';
-import { defaultImage } from 'constants/global';
-import PropTypes from 'prop-types';
-import { withErrorBoundary } from 'react-error-boundary';
+import ErrorComponent from "components/common/ErrorComponent";
+import { defaultImage } from "constants/global";
+import PropTypes from "prop-types";
+import { withErrorBoundary } from "react-error-boundary";
 /**
  * CampImage Component
  *
@@ -12,7 +12,7 @@ import { withErrorBoundary } from 'react-error-boundary';
  *
  * @returns {JSX.Element} - A container for the campaign image with the specified class names.
  */
-const CampImage     = ({ image = defaultImage, className = 'h-[158px]' }) => {
+const CampImage     = ({ image = defaultImage, className = "h-[158px]" }) => {
   return (
     <div className={className}>
       <img

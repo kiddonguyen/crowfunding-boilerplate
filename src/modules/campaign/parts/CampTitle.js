@@ -1,7 +1,7 @@
-import ErrorComponent from 'components/common/ErrorComponent';
-import PropTypes from 'prop-types';
-import { withErrorBoundary } from 'react-error-boundary';
-import classNames from 'utils/classNames';
+import ErrorComponent from "components/common/ErrorComponent";
+import PropTypes from "prop-types";
+import { withErrorBoundary } from "react-error-boundary";
+import classNames from "utils/classNames";
 /**
  * CampTitle Component
  *
@@ -12,9 +12,9 @@ import classNames from 'utils/classNames';
  *
  * @returns {JSX.Element} - A heading element with the provided content and specified class names.
  */
-const CampTitle     = ({ children, className = 'mb-1 font-semibold' }) => {
+const CampTitle     = ({ children, className = "mb-1 font-semibold" }) => {
   return (
-    <h3 className={classNames('text-text1 mb-1', className)}>{children}</h3>
+    <h3 className={classNames("text-text1 mb-1", className)}>{children}</h3>
   );
 };
 CampTitle.propTypes = {

@@ -1,2 +1,3 @@
-import Input from './Input';
-export { Input };
+import Input from "./Input";
+import Textarea from "./Textarea";
+export { Input, Textarea };

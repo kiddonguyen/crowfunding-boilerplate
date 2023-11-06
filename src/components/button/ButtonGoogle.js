@@ -1,7 +1,7 @@
-import ErrorComponent from 'components/common/ErrorComponent';
-import PropTypes from 'prop-types';
-import { withErrorBoundary } from 'react-error-boundary';
-const ButtonGoogle     = ({ text = 'Sign up with Google', onClick = () => {} }) => (
+import ErrorComponent from "components/common/ErrorComponent";
+import PropTypes from "prop-types";
+import { withErrorBoundary } from "react-error-boundary";
+const ButtonGoogle     = ({ text = "Sign up with Google", onClick = () => {} }) => (
   <button
     onClick={onClick}
     className="dark:border-darkStrock flex items-center gap-x-3 w-full justify-center py-4 border border-strock rounded-xl mb-5 dark:text-white"

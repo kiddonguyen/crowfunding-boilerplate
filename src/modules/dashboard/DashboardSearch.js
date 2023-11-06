@@ -1,5 +1,5 @@
-import { defaultImage } from 'constants/global';
-import { useState } from 'react';
+import { defaultImage } from "constants/global";
+import { useState } from "react";
 
 const DashboardSearch = () => {
   const [showSearch, setShowSearch] = useState(false);

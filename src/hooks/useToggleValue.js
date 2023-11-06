@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 /**
  * A custom React hook for managing a toggle state value.
  *

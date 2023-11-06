@@ -1,7 +1,7 @@
-import ErrorComponent from 'components/common/ErrorComponent';
-import PropTypes from 'prop-types';
-import { withErrorBoundary } from 'react-error-boundary';
-import { useDropdown } from './dropdown-context';
+import ErrorComponent from "components/common/ErrorComponent";
+import PropTypes from "prop-types";
+import { withErrorBoundary } from "react-error-boundary";
+import { useDropdown } from "./dropdown-context";
 /**
  * List is a component that conditionally renders a list of items when the dropdown is visible.
  *
@@ -15,7 +15,7 @@ const List = ({ children }) => {
   return (
     <>
       {show && (
-        <div className="absolute top-full left-0 w-full bg-white shadow-sm">
+        <div className="absolute top-full left-0 w-full bg-white shadow-sm rounded-lg">
           {children}
         </div>
       )}

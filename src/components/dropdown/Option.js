@@ -1,7 +1,7 @@
-import ErrorComponent from 'components/common/ErrorComponent';
-import PropTypes from 'prop-types';
-import { withErrorBoundary } from 'react-error-boundary';
-import { useDropdown } from './dropdown-context';
+import ErrorComponent from "components/common/ErrorComponent";
+import PropTypes from "prop-types";
+import { withErrorBoundary } from "react-error-boundary";
+import { useDropdown } from "./dropdown-context";
 /**
  * Option is a component representing a selectable item within a dropdown menu.
  *

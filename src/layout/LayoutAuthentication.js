@@ -1,11 +1,11 @@
 // Layout cho các phần tử được sử dụng trong những trang Authentication (Sign In, Sign Up)
-import ErrorComponent from 'components/common/ErrorComponent';
-import PropTypes from 'prop-types';
-import { withErrorBoundary } from 'react-error-boundary';
-import { Link } from 'react-router-dom';
+import ErrorComponent from "components/common/ErrorComponent";
+import PropTypes from "prop-types";
+import { withErrorBoundary } from "react-error-boundary";
+import { Link } from "react-router-dom";
 const LayoutAuthentication = (props) => {
   // eslint-disable-next-line align-assignments/align-assignments
-  const { children, heading = '' } = props;
+  const { children, heading = "" } = props;
   return (
     <div className="w-full min-h-screen bg-lite dark:bg-darkbg p-10 relative isolate">
       <img

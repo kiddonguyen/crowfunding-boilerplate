@@ -1,8 +1,8 @@
-import CampCategory from './parts/CampCategory';
-import CampDesc from './parts/CampDesc';
-import CampImage from './parts/CampImage';
-import CampMeta from './parts/CampMeta';
-import CampTitle from './parts/CampTitle';
+import CampCategory from "./parts/CampCategory";
+import CampDesc from "./parts/CampDesc";
+import CampImage from "./parts/CampImage";
+import CampMeta from "./parts/CampMeta";
+import CampTitle from "./parts/CampTitle";
 
 const CampaignFeature = () => {
   return (

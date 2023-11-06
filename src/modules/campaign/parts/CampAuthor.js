@@ -1,7 +1,7 @@
-import ErrorComponent from 'components/common/ErrorComponent';
-import { defaultImage } from 'constants/global';
-import PropTypes from 'prop-types';
-import { withErrorBoundary } from 'react-error-boundary';
+import ErrorComponent from "components/common/ErrorComponent";
+import { defaultImage } from "constants/global";
+import PropTypes from "prop-types";
+import { withErrorBoundary } from "react-error-boundary";
 /**
  * CampAuthor Component
  *
@@ -12,7 +12,7 @@ import { withErrorBoundary } from 'react-error-boundary';
  *
  * @returns {JSX.Element} - A component displaying the author's image and name.
  */
-const CampAuthor     = ({ image = defaultImage, author = 'Mahfulzul Nabil' }) => {
+const CampAuthor     = ({ image = defaultImage, author = "Mahfulzul Nabil" }) => {
   return (
     <div className="flex items-center mb-2 gap-x-3">
       <img

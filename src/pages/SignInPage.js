@@ -1,20 +1,20 @@
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, ButtonGoogle } from 'components/button';
-import FormGroup from 'components/common/FormGroup';
-import { IconEyeToggle } from 'components/icons';
-import { Input } from 'components/input';
-import Label from 'components/label/Label';
-import useToggleValue from 'hooks/useToggleValue';
-import LayoutAuthentication from 'layout/LayoutAuthentication';
-import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
-import * as yup from 'yup';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Button, ButtonGoogle } from "components/button";
+import FormGroup from "components/common/FormGroup";
+import { IconEyeToggle } from "components/icons";
+import { Input } from "components/input";
+import Label from "components/label/Label";
+import useToggleValue from "hooks/useToggleValue";
+import LayoutAuthentication from "layout/LayoutAuthentication";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import * as yup from "yup";
 const schema     = yup.object({
-  email: yup.string().email('Invalid email address'),
+  email: yup.string().email("Invalid email address"),
   password: yup
     .string()
-    .required('This field is required')
-    .min(8, 'Password must be at least 8 characters'),
+    .required("This field is required")
+    .min(8, "Password must be at least 8 characters"),
 });
 const SignInPage = () => {
   const {
@@ -23,7 +23,7 @@ const SignInPage = () => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-    mode: 'onSubmit',
+    mode: "onSubmit",
   });
   const { value: showPassword, handleToggleValue: handleTogglePassword } =
     useToggleValue();
@@ -33,7 +33,7 @@ const SignInPage = () => {
   return (
     <LayoutAuthentication heading="Welcome back!">
       <p className="text-center lg:text-sm font-normal text-xs text-text3 lg:mb-8 mb-6">
-        Don&apos;t have an account?{' '}
+        Don&apos;t have an account?{" "}
         <Link to="sign-up" className="text-primary font-medium underline">
           Sign up
         </Link>
@@ -56,7 +56,7 @@ const SignInPage = () => {
             control={control}
             name="password"
             placeholder="Please enter your password"
-            type={showPassword ? 'text' : 'password'}
+            type={showPassword ? "text" : "password"}
             error={errors.password?.message}
           >
             <IconEyeToggle open={showPassword} onClick={handleTogglePassword} />

@@ -1,7 +1,7 @@
-import ErrorComponent from 'components/common/ErrorComponent';
-import PropTypes from 'prop-types';
-import { withErrorBoundary } from 'react-error-boundary';
-import { DropdownProvider } from './dropdown-context';
+import ErrorComponent from "components/common/ErrorComponent";
+import PropTypes from "prop-types";
+import { withErrorBoundary } from "react-error-boundary";
+import { DropdownProvider } from "./dropdown-context";
 /**
  * A higher-order component (HOC) that wraps its children within a DropdownProvider,
  * allowing them to access dropdown-related context and functionality.

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const ErrorComponent = () => (
   <div className="text-red-500 bg-red-100 p-5 rounded-lg">

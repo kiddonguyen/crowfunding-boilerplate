@@ -1,12 +1,12 @@
-import { Button } from 'components/button';
-import Heading from 'components/common/Heading';
-import LayoutDashboard from 'layout/LayoutDashboard';
-import CampaignFeature from 'modules/campaign/CampaignFeature';
-import CampaignGrid from 'modules/campaign/CampaignGrid';
+import { Button } from "components/button";
+import Heading from "components/common/Heading";
+import CampaignFeature from "modules/campaign/CampaignFeature";
+import CampaignGrid from "modules/campaign/CampaignGrid";
+import { Fragment } from "react";
 
 const CampaignPage = () => {
   return (
-    <LayoutDashboard>
+    <Fragment>
       <div className="mb-10 bg-white rounded-3xl flex items-center justify-between py-8 px-10">
         <div className="flex items-start gap-x-6">
           {/* Plus Icon */}
@@ -34,7 +34,7 @@ const CampaignPage = () => {
               Jump right into our editor and create your first Virtue campaign!
             </p>
             <p className="text-sm text-text3">
-              Need any help?{' '}
+              Need any help?{" "}
               <a href="/" className="text-primary">
                 Learn More...
               </a>
@@ -76,7 +76,7 @@ const CampaignPage = () => {
           </svg>
         </div>
       </Button>
-    </LayoutDashboard>
+    </Fragment>
   );
 };
 

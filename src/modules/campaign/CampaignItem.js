@@ -1,9 +1,9 @@
-import CampAuthor from './parts/CampAuthor';
-import CampCategory from './parts/CampCategory';
-import CampDesc from './parts/CampDesc';
-import CampMeta from './parts/CampMeta';
-import CampTitle from './parts/CampTitle';
-import CampImage from './parts/CampImage';
+import CampAuthor from "./parts/CampAuthor";
+import CampCategory from "./parts/CampCategory";
+import CampDesc from "./parts/CampDesc";
+import CampMeta from "./parts/CampMeta";
+import CampTitle from "./parts/CampTitle";
+import CampImage from "./parts/CampImage";
 
 const CampaignItem = () => {
   return (

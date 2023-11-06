@@ -1,11 +1,11 @@
-import { Button } from 'components/button';
-import DashboardFund from './DashboardFund';
-import DashboardSearch from './DashboardSearch';
-import { Link } from 'react-router-dom';
+import { Button } from "components/button";
+import DashboardFund from "./DashboardFund";
+import DashboardSearch from "./DashboardSearch";
+import { Link } from "react-router-dom";
 const DashboardTopbar = () => (
   <div className="flex items-center justify-between mb-8">
     <div className="flex items-center gap-x-10 ml-[14px]">
-      <Link className="inline-block" to={'/'}>
+      <Link className="inline-block" to={"/"}>
         <img srcSet="/logo.png 2x" alt="Crowfunding" title="Crowfunding" />
       </Link>
       <div className="w-full max-w-[458px]">

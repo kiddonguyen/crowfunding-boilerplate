@@ -1,9 +1,9 @@
-import ErrorComponent from 'components/common/ErrorComponent';
-import { IconFolder } from 'components/icons';
-import PropTypes from 'prop-types';
-import { withErrorBoundary } from 'react-error-boundary';
-import { Link } from 'react-router-dom';
-import classNames from 'utils/classNames';
+import ErrorComponent from "components/common/ErrorComponent";
+import { IconFolder } from "components/icons";
+import PropTypes from "prop-types";
+import { withErrorBoundary } from "react-error-boundary";
+import { Link } from "react-router-dom";
+import classNames from "utils/classNames";
 /**
  * CampCategory Component
  *
@@ -14,12 +14,12 @@ import classNames from 'utils/classNames';
  *
  * @returns {JSX.Element} - A link to the category with an icon and the specified class names.
  */
-const CampCategory     = ({ text = 'Education', className = 'text-xs' }) => {
+const CampCategory     = ({ text = "Education", className = "text-xs" }) => {
   return (
     <Link
       to="/"
       className={classNames(
-        'flex items-end gap-x-3 font-medium text-text3 mb-4',
+        "flex items-end gap-x-3 font-medium text-text3 mb-4",
         className,
       )}
     >

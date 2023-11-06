@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 /**
  * IconEyeToggle component is used to display an eye icon that can be toggled.
  * @param {Object} param0 - Component props.

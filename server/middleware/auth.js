@@ -1,10 +1,10 @@
-const config      = require('dotenv').config();
-const jwt         = require('jsonwebtoken');
+const config      = require("dotenv").config();
+const jwt         = require("jsonwebtoken");
 const verifyToken = (req, res, next) => {
-  const authHeader = req.header('Authorization');
+  const authHeader = req.header("Authorization");
   // [Bearers,token]
-  const token = authHeader && authHeader.split(' ')[1];
-  console.log('verifyToken ~ token', token);
+  const token = authHeader && authHeader.split(" ")[1];
+  console.log("verifyToken ~ token", token);
 
   if (!token) {
     return res.sendStatus(401);

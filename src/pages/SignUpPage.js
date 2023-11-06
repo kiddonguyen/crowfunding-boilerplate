@@ -1,26 +1,26 @@
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Button } from 'components/button';
-import { ButtonGoogle } from 'components/button/';
-import { Checkbox } from 'components/checkbox';
-import FormGroup from 'components/common/FormGroup';
-import { IconEyeToggle } from 'components/icons';
-import { Input } from 'components/input';
-import Label from 'components/label/Label';
-import useToggleValue from 'hooks/useToggleValue';
-import LayoutAuthentication from 'layout/LayoutAuthentication';
-import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
-import * as yup from 'yup';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Button } from "components/button";
+import { ButtonGoogle } from "components/button/";
+import { Checkbox } from "components/checkbox";
+import FormGroup from "components/common/FormGroup";
+import { IconEyeToggle } from "components/icons";
+import { Input } from "components/input";
+import Label from "components/label/Label";
+import useToggleValue from "hooks/useToggleValue";
+import LayoutAuthentication from "layout/LayoutAuthentication";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import * as yup from "yup";
 const schema     = yup.object({
-  name: yup.string().required('This field is required'),
+  name: yup.string().required("This field is required"),
   email: yup
     .string()
-    .email('Invalid email address')
-    .required('This field is required'),
+    .email("Invalid email address")
+    .required("This field is required"),
   password: yup
     .string()
-    .required('This field is required')
-    .min(8, 'Password must be at least 8 characters'),
+    .required("This field is required")
+    .min(8, "Password must be at least 8 characters"),
 });
 const SignUpPage = () => {
   const {
@@ -29,7 +29,7 @@ const SignUpPage = () => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-    mode: 'onSubmit',
+    mode: "onSubmit",
   });
   const { value: acceptTerm, handleToggleValue: handleToggleTerm }       = useToggleValue();
   const { value: showPassword, handleToggleValue: handleTogglePassword } =
@@ -40,7 +40,7 @@ const SignUpPage = () => {
   return (
     <LayoutAuthentication heading="Sign Up">
       <p className="text-center lg:text-sm font-medium text-xs text-text3 lg:mb-8 mb-6">
-        Already have an account?{' '}
+        Already have an account?{" "}
         <Link to="sign-in" className="text-primary font-medium underline">
           Sign in
         </Link>
@@ -75,7 +75,7 @@ const SignUpPage = () => {
             control={control}
             name="password"
             placeholder="Create a password"
-            type={showPassword ? 'text' : 'password'}
+            type={showPassword ? "text" : "password"}
             error={errors.password?.message}
           >
             <IconEyeToggle open={showPassword} onClick={handleTogglePassword} />
@@ -84,9 +84,9 @@ const SignUpPage = () => {
         <div className="flex items-start gap-x-5 mb-5">
           <Checkbox name="term" checked={acceptTerm} onClick={handleToggleTerm}>
             <p className="lg:text-sm text-text2 flex-1 text-xs dark:text-text3">
-              I agree to the{' '}
+              I agree to the{" "}
               <span className="text-secondary underline">Terms of Use</span> and
-              have read and understand the{' '}
+              have read and understand the{" "}
               <span className="text-secondary underline">Privacy Policy</span>
             </p>
           </Checkbox>

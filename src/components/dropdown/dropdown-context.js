@@ -1,7 +1,7 @@
-import ErrorComponent from 'components/common/ErrorComponent';
-import PropTypes from 'prop-types';
-import { createContext, useContext, useState } from 'react';
-import { withErrorBoundary } from 'react-error-boundary';
+import ErrorComponent from "components/common/ErrorComponent";
+import PropTypes from "prop-types";
+import { createContext, useContext, useState } from "react";
+import { withErrorBoundary } from "react-error-boundary";
 const DropdownContext = createContext();
 /**
  * DropdownProvider is a component that uses React Context to provide state and methods for managing a dropdown menu.
@@ -34,8 +34,8 @@ function DropdownProvider(props) {
  */
 function useDropdown() {
   const context = useContext(DropdownContext);
-  if (typeof context === 'undefined') {
-    throw new Error('useDropdown must be used within DropdownProvider');
+  if (typeof context === "undefined") {
+    throw new Error("useDropdown must be used within DropdownProvider");
   }
   return context;
 }

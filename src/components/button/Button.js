@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import classNames from 'utils/classNames';
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import classNames from "utils/classNames";
 /**
  * A versatile button component that can render as either a <button> or a <Link> based on props.
  * It supports various styling options, loading state, and customizable children.
@@ -16,9 +16,9 @@ import classNames from 'utils/classNames';
  * @returns {ReactNode} - A button or link component with specified styles and behavior.
  */
 const Button = ({
-  type = 'button',
+  type = "button",
   children,
-  className = '',
+  className = "",
   isLoading = false,
   ...rest
 }) => {
@@ -30,15 +30,15 @@ const Button = ({
   );
   // Define default styling based on the kind prop (primary, secondary, or default).
   let defaultClassName =
-    'p-4 text-base font-semibold rounded-xl flex justify-center items-center min-h-[56px]';
+    "p-4 text-base font-semibold rounded-xl flex justify-center items-center min-h-[56px]";
   switch (rest.kind) {
-    case 'primary':
+    case "primary":
       defaultClassName = defaultClassName + ` bg-primary text-white`;
       break;
-    case 'secondary':
+    case "secondary":
       defaultClassName = defaultClassName + ` bg-secondary text-white`;
       break;
-    case 'ghost':
+    case "ghost":
       defaultClassName =
         defaultClassName + ` bg-secondary bg-opacity-10 text-secondary`;
       break;
@@ -58,7 +58,7 @@ const Button = ({
       type={type}
       className={classNames(
         defaultClassName,
-        isLoading ? 'opacity-50' : '',
+        isLoading ? "opacity-50" : "",
         className,
       )}
       {...rest}
@@ -74,6 +74,6 @@ Button.propTypes = {
   className: PropTypes.string,
   isLoading: PropTypes.bool,
   href: PropTypes.string,
-  kind: PropTypes.oneOf(['primary', 'secondary', 'ghost']),
+  kind: PropTypes.oneOf(["primary", "secondary", "ghost"]),
 };
 export default Button;

@@ -3,28 +3,29 @@ import PropTypes from "prop-types";
 import { withErrorBoundary } from "react-error-boundary";
 import { useController } from "react-hook-form";
 import classNames from "utils/classNames";
-const Input = (props) => {
+const Textarea = (props) => {
+  let textareaClassNames =
+    "w-full py-4 px-6 border bg-transparent rounded-xl text-sm font-medium text-text1";
+  textareaClassNames     = textareaClassNames +
+    " placeholder:text-text4 dark:placeholder:text-text2 dark:text-white resize-none min-h-[140px] outline-none";
   const {
     control,
     name,
-    type = "text",
     error = "",
-    placeholder = "",
     children,
+    placeholder = "",
     ...rest
   } = props;
-  const { field } = useController({
+  const { field }        = useController({
     control,
     name,
     defaultValue: "",
   });
   return (
     <div className="relative">
-      <input
-        id={name}
-        type={type}
+      <textarea
         className={classNames(
-          "w-full py-4 px-6 border bg-transparent rounded-xl text-sm font-medium text-text1 placeholder:text-text4 dark:placeholder:text-text2 dark:text-white",
+          textareaClassNames,
           error.length > 0
             ? "border-error text-error"
             : "border-strock dark:border-darkStrock text-text1",
@@ -47,14 +48,13 @@ const Input = (props) => {
     </div>
   );
 };
-Input.propTypes = {
+Textarea.propTypes = {
   name: PropTypes.string,
-  type: PropTypes.string,
   error: PropTypes.string,
   placeholder: PropTypes.string,
   control: PropTypes.any.isRequired,
   children: PropTypes.any,
 };
-export default withErrorBoundary(Input, {
+export default withErrorBoundary(Textarea, {
   FallbackComponent: ErrorComponent,
 });

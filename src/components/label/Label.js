@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import classNames from 'utils/classNames';
+import PropTypes from "prop-types";
+import classNames from "utils/classNames";
 /**
  * A simple label component used to associate text with form elements using the "for" attribute.
  *
@@ -13,12 +13,12 @@ import classNames from 'utils/classNames';
 const Label = (props) => {
   // Destructure the properties and provide default values.
   // eslint-disable-next-line align-assignments/align-assignments
-  const { children, htmlFor = '', className = '' } = props;
+  const { children, htmlFor = "", className = "" } = props;
   return (
     <label
       htmlFor={htmlFor}
       className={classNames(
-        'dark:text-text-3 text-sm font-medium text-text2 cursor-pointer inline-block',
+        "dark:text-text-3 text-sm font-medium text-text2 cursor-pointer inline-block",
         className,
       )}
     >
