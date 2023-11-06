@@ -12,8 +12,8 @@ const Heading     = ({ children, className = '', number = '' }) => {
   );
 };
 Heading.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.any,
   className: PropTypes.string,
-  number: PropTypes.string,
+  number: PropTypes.number,
 };
 export default withErrorBoundary(Heading);

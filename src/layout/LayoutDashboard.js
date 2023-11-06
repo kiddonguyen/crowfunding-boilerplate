@@ -1,8 +1,10 @@
+import Overlay from 'components/common/Overlay';
 import DashboardSidebar from 'modules/dashboard/DashboardSidebar';
 import DashboardTopbar from 'modules/dashboard/DashboardTopbar';
 import PropTypes from 'prop-types';
 const LayoutDashboard     = ({ children }) => (
   <div className="p-10 bg-lite min-h-screen">
+    <Overlay></Overlay>
     <DashboardTopbar />
     <div className="flex gap-x-10 items-start">
       <DashboardSidebar />

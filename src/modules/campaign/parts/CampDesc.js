@@ -12,7 +12,7 @@ import classNames from 'utils/classNames';
  *
  * @returns {JSX.Element} - A paragraph element with the provided content and specified class names.
  */
-const CampDesc     = ({ children, className = 'text-sm mb-4' }) => {
+const CampDesc     = ({ children, className = 'text-xs mb-4' }) => {
   return (
     <p className={classNames('text-sm mb-4 text-text3 font-normal', className)}>
       {children}

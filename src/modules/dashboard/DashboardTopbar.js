@@ -1,17 +1,25 @@
 import { Button } from 'components/button';
-import DashboardSearch from './DashboardSearch';
 import DashboardFund from './DashboardFund';
+import DashboardSearch from './DashboardSearch';
+import { Link } from 'react-router-dom';
 const DashboardTopbar = () => (
   <div className="flex items-center justify-between mb-8">
     <div className="flex items-center gap-x-10 ml-[14px]">
-      <img srcSet="/logo.png 2x" alt="Crowfunding" title="Crowfunding" />
+      <Link className="inline-block" to={'/'}>
+        <img srcSet="/logo.png 2x" alt="Crowfunding" title="Crowfunding" />
+      </Link>
       <div className="w-full max-w-[458px]">
         <DashboardSearch />
       </div>
     </div>
     <div className="flex items-center gap-x-10 flex-1 justify-end">
       <DashboardFund></DashboardFund>
-      <Button className="bg-secondary text-white px-7" type="button">
+      <Button
+        className="px-7"
+        type="button"
+        href="/start-campaign"
+        kind="secondary"
+      >
         Start a campaign
       </Button>
       <img
