@@ -19,7 +19,7 @@ const Select = ({ placeholder = "", className = "" }) => {
     "text-sm text-text1 placeholder:text-text4 dark:placeholder:text-text2 dark:text-white border-strock dark:border-darkStrock";
   return (
     <div className={classNames(selectClassNames, className)} onClick={toggle}>
-      <span>{placeholder}</span>
+      <span className="capitalize">{placeholder}</span>
       <span>
         {show ? (
           <svg

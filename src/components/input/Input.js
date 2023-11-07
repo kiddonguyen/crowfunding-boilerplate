@@ -19,15 +19,15 @@ const Input = (props) => {
     defaultValue: "",
   });
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <input
         id={name}
         type={type}
         className={classNames(
-          "w-full py-4 px-6 border bg-transparent rounded-xl text-sm font-medium text-text1 placeholder:text-text4 dark:placeholder:text-text2 dark:text-white",
+          "w-full py-4 px-6 border bg-transparent rounded-xl text-sm font-medium placeholder:text-text4 dark:placeholder:text-text2 dark:text-white",
           error.length > 0
             ? "border-error text-error"
-            : "border-strock dark:border-darkStrock text-text1",
+            : "border-strock dark:border-darkStroke text-text1",
           children ? "pr-16" : "",
         )}
         placeholder={error.length <= 0 ? placeholder : ""}

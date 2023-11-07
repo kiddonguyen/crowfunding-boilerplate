@@ -15,7 +15,7 @@ const List = ({ children }) => {
   return (
     <>
       {show && (
-        <div className="absolute top-full left-0 w-full bg-white shadow-sm rounded-lg z-10 border border-t-0">
+        <div className="max-h-[300px] overflow-y-auto absolute top-full left-0 w-full bg-white shadow-sm rounded-lg z-20 border border-t-0">
           {children}
         </div>
       )}

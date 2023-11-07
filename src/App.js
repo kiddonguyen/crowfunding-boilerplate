@@ -10,7 +10,7 @@ const StartCampaignPage = React.lazy(() => import("./pages/StartCampaignPage"));
 const CheckoutPage      = React.lazy(() => import("./pages/CheckoutPage"));
 const ShippingPage      = React.lazy(() => import("./pages/ShippingPage"));
 const CampaignView      = React.lazy(() =>
-  import("./modules/campaign/CampaignView")
+  import("./modules/campaign/CampaignView"),
 );
 const LayoutPayment     = React.lazy(() => import("./layout/LayoutPayment"));
 const LayoutDashboard   = React.lazy(() => import("./layout/LayoutDashboard"));

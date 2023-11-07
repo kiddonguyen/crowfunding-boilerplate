@@ -17,7 +17,7 @@ input:focus + .error-input {
   display: none;
 }
 .quill {
-  @apply border border-strock rounded-xl;
+  @apply border border-strock rounded-xl w-full;
   border-radius: 10px;
   padding: 15px 25px;
   .ql-toolbar.ql-snow {
@@ -38,20 +38,68 @@ input:focus + .error-input {
     }
   }
 }
-.gradient-banner{
-  background-image: linear-gradient(179deg, rgba(32, 18, 63, 0) -7.14%, rgba(0, 0, 0, 0.4) 87.01%),
-          url("https://source.unsplash.com/random") ;
+.gradient-banner {
+  background-image: linear-gradient(
+      179deg,
+      rgba(32, 18, 63, 0) -7.14%,
+      rgba(0, 0, 0, 0.4) 87.01%
+    ),
+    url("https://source.unsplash.com/random");
 }
-.shadow-1{
-  box-shadow: 4px 4px 8px 0px rgba(226, 226, 226, 0.20), -4px 4px 8px 0px rgba(226, 226, 226, 0.20);
+.shadow-1 {
+  box-shadow:
+    4px 4px 8px 0px rgba(226, 226, 226, 0.2),
+    -4px 4px 8px 0px rgba(226, 226, 226, 0.2);
 }
-.ReactModal__Body--open{
+.ReactModal__Body--open {
   overflow: hidden;
 }
 .scroll-hidden {
--ms-overflow-style: none;
-scrollbar-width: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 .scroll-hidden::-webkit-scrollbar {
- display: none;
+  display: none;
+}
+body .react-date-picker {
+  @apply w-full py-4 px-6 border bg-transparent rounded-xl text-sm font-medium text-text1 placeholder:text-text4 dark:placeholder:text-text2 dark:text-white border-strock dark:border-darkStroke;
+  height: 54px;
+  &__button {
+    padding: 0;
+  }
+  &__inputGroup {
+    min-width: 0;
+    flex-grow: 0;
+  }
+  &__clear {
+    &-button {
+      display: none;
+    }
+  }
+  &__wrapper {
+    @apply border-none flex justify-between items-center;
+  }
+  &__calendar {
+    .react-calendar {
+      @apply border-none shadow rounded-lg;
+      &__navigation {
+        button {
+          &:enabled {
+            &:hover,
+            &:focus {
+              @apply bg-transparent;
+            }
+          }
+        }
+      }
+      &__tile {
+        &--active {
+          @apply bg-primary text-white rounded-xl;
+        }
+        &--now {
+          @apply text-secondary bg-transparent;
+        }
+      }
+    }
+  }
 }

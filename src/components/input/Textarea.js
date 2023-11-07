@@ -22,7 +22,7 @@ const Textarea = (props) => {
     defaultValue: "",
   });
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <textarea
         className={classNames(
           textareaClassNames,
