@@ -13,13 +13,8 @@ import CampaignItem from "./CampaignItem";
 const CampaignView = () => {
   return (
     <Fragment>
-      <div
-        className="mb-10 text-[40px] font-bold h-[140px] rounded-3xl bg-cover bg-no-repeat bg-opacity-40 flex items-center justify-center text-white"
-        style={{
-          backgroundImage: `linear-gradient(179deg, rgba(32, 18, 63, 0) -7.14%, rgba(0, 0, 0, 0.4) 87.01%),
-          url(/banner.png)`,
-        }}
-      >
+      {/* Banner */}
+      <div className="gradient-banner mb-10 text-[40px] font-bold h-[140px] rounded-3xl bg-cover bg-no-repeat bg-opacity-40 flex items-center justify-center text-white">
         <h1>Education</h1>
       </div>
       <div className="flex items-start gap-x-10 w-full max-w-[1066px]">
@@ -69,9 +64,18 @@ const CampaignView = () => {
         </div>
         <Button kind="primary">Back this project</Button>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:gap-x-[124px] mb-[70px]">
-        <div className="w-[605px]">1.5fr</div>
-        <div className="w-[441px] gap-y-16 flex flex-col">
+      <div className="grid gap-x-[124px] grid-cols-3 mb-[70px]">
+        <div className="col-span-2">
+          <h2 className="uppercase text-lg text-text1 font-semibold mb-5">
+            story
+          </h2>
+          <div className="bg-white w-full">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+            consectetur accusantium velit doloremque ex sit, nam error
+            exercitationem natus. Sequi.
+          </div>
+        </div>
+        <div className="gap-y-16 flex flex-col col-span-1">
           <CampaignSupport></CampaignSupport>
           <div className="flex flex-col gap-y-8">
             {Array(3)

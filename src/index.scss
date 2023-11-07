@@ -38,7 +38,20 @@ input:focus + .error-input {
     }
   }
 }
-
+.gradient-banner{
+  background-image: linear-gradient(179deg, rgba(32, 18, 63, 0) -7.14%, rgba(0, 0, 0, 0.4) 87.01%),
+          url("https://source.unsplash.com/random") ;
+}
 .shadow-1{
   box-shadow: 4px 4px 8px 0px rgba(226, 226, 226, 0.20), -4px 4px 8px 0px rgba(226, 226, 226, 0.20);
+}
+.ReactModal__Body--open{
+  overflow: hidden;
+}
+.scroll-hidden {
+-ms-overflow-style: none;
+scrollbar-width: none;
+}
+.scroll-hidden::-webkit-scrollbar {
+ display: none;
 }
