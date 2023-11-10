@@ -1,11 +1,11 @@
 require("dotenv").config();
-const express = require("express");
-const fs = require("fs");
+const express     = require("express");
+const fs          = require("fs");
 const verifyToken = require("./middleware/auth");
-let rawdata = fs.readFileSync("db.json");
-let database = JSON.parse(rawdata);
-const jsonServer = require("json-server");
-const app = express();
+let rawdata       = fs.readFileSync("db.json");
+let database      = JSON.parse(rawdata);
+const jsonServer  = require("json-server");
+const app         = express();
 app.use(express.json());
 const cors = require("cors");
 app.use(cors());

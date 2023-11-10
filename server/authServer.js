@@ -1,19 +1,20 @@
+/* eslint-disable no-process-env */
 require("dotenv").config();
-const jwt = require("jsonwebtoken");
+const jwt     = require("jsonwebtoken");
 const express = require("express");
-const app = express();
+const app     = express();
 app.use(express.json());
-const fs = require("fs");
+const fs          = require("fs");
 const verifyToken = require("./middleware/auth");
-const rawdata = fs.readFileSync("db.json");
-const database = JSON.parse(rawdata);
-let users = database.users;
-const cors = require("cors");
-const bcrypt = require("bcrypt");
+const rawdata     = fs.readFileSync("db.json");
+const database    = JSON.parse(rawdata);
+let users         = database.users;
+const cors        = require("cors");
+const bcrypt      = require("bcrypt");
 app.use(cors());
 const generateTokens = (payload) => {
   const { id, name } = payload;
-  const accessToken = jwt.sign({ id, name }, process.env.ACCESS_TOKEN_SECRET, {
+  const accessToken  = jwt.sign({ id, name }, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: "5m",
   });
   const refreshToken = jwt.sign(
@@ -43,15 +44,19 @@ app.get("/me", verifyToken, (req, res) => {
   const user = users.find((user) => {
     return user.id === req.userId;
   });
-  if (!user) return res.sendStatus(401);
+  if (!user) {
+    return res.sendStatus(401);
+  }
   res.json(user);
 });
 app.post("/auth/login", (req, res) => {
   const email = req.body.email;
-  const user = users.find((user) => {
+  const user  = users.find((user) => {
     return user.email === email;
   });
-  if (!user) return res.sendStatus(401);
+  if (!user) {
+    return res.sendStatus(401);
+  }
   const dbPassword = user.password;
   bcrypt.compare(req.body.password, dbPassword, (err, hash) => {
     if (err || !hash) {
@@ -71,11 +76,15 @@ app.post("/auth/login", (req, res) => {
 
 app.post("/token", (req, res) => {
   const refreshToken = req.body.refreshToken;
-  if (!refreshToken) return res.sendStatus(401);
+  if (!refreshToken) {
+    return res.sendStatus(401);
+  }
   const user = users.find((user) => {
     return user.refreshToken === refreshToken;
   });
-  if (!user) return res.sendStatus(403);
+  if (!user) {
+    return res.sendStatus(403);
+  }
   try {
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
     const tokens = generateTokens(user);
@@ -89,7 +98,7 @@ app.post("/token", (req, res) => {
 
 app.post("/auth/register", (req, res) => {
   const { name, password, email, permissions } = req.body;
-  const user = users.find((user) => {
+  const user                                   = users.find((user) => {
     return user.email === email;
   });
   if (user) {

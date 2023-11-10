@@ -6,7 +6,7 @@ import { Dropdown } from "components/dropdown";
 import ImageUpload from "components/image/ImageUpload";
 import { Input, Textarea } from "components/input";
 import { Label } from "components/label";
-import { apiUrl } from "config/config";
+import { apiURL } from "config/config";
 import useOnChange from "hooks/useOnChange";
 import ImageUploader from "quill-image-uploader";
 import { useEffect, useMemo, useState } from "react";
@@ -38,7 +38,7 @@ const CampaignAddNew = () => {
     useOnChange(500);
   const handleAddNewCampaign                                       = async (values) => {
     try {
-      await axios.post(`${apiUrl}/campaigns`, {
+      await axios.post(`${apiURL}/campaigns`, {
         ...values,
         content,
         startDate,

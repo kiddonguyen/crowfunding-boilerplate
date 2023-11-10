@@ -23,7 +23,7 @@ module.exports = {
   plugins: ["react", "align-assignments"],
   rules: {
     "no-unused-vars": 1,
-    "no-undef": 2,
+    "no-undef": 1,
     "align-assignments/align-assignments": [
       "warn",
       { require: true, operator: "always" },
@@ -107,7 +107,7 @@ module.exports = {
     "no-label-var": 2,
     "no-shadow-restricted-names": 2,
     "no-undef-init": 2,
-    "no-undefined": 2,
+    "no-undefined": 1,
     "no-use-before-define": 2,
     "brace-style": 1,
     camelcase: 1,
