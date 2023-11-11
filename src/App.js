@@ -1,4 +1,6 @@
 /* eslint-disable camelcase */
+import { permissions } from "constants/permissions";
+import RequiredAuthPage from "pages/RequiredAuthPage";
 import React, { Suspense, useEffect } from "react";
 import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +15,7 @@ const CampaignPage      = React.lazy(() => import("./pages/CampaignPage"));
 const StartCampaignPage = React.lazy(() => import("./pages/StartCampaignPage"));
 const CheckoutPage      = React.lazy(() => import("./pages/CheckoutPage"));
 const ShippingPage      = React.lazy(() => import("./pages/ShippingPage"));
+const UnauthorizedPage  = React.lazy(() => import("./pages/UnauthorizedPage"));
 const CampaignView      = React.lazy(() =>
   import("./modules/campaign/CampaignView")
 );
@@ -54,8 +57,15 @@ function App() {
         <Route element={<LayoutDashboard></LayoutDashboard>}>
           <Route index path="/" element={<DashboardPage />} />
           <Route path="/campaign" element={<CampaignPage />} />
-          <Route path="/start-campaign" element={<StartCampaignPage />} />
+          <Route
+            element={
+              <RequiredAuthPage allowPermissions={[permissions.campaign.CREATE_CAMPAIGN]}></RequiredAuthPage>
+            }
+          >
+            <Route path="/start-campaign" element={<StartCampaignPage />} />
+          </Route>
           <Route path="/campaign/:slug" element={<CampaignView />} />
+          <Route path="/unauthorized" element={<UnauthorizedPage />} />
         </Route>
         <Route element={<LayoutPayment />}>
           <Route path="/checkout" element={<CheckoutPage />}></Route>

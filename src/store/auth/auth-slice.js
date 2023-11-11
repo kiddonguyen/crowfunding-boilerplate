@@ -3,6 +3,7 @@ const { createSlice } = require("@reduxjs/toolkit");
 const authSlice = createSlice({
   name: "auth",
   initialState: {
+    // eslint-disable-next-line no-undefined
     user: undefined,
     accessToken: null,
   },

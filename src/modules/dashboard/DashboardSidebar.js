@@ -24,7 +24,7 @@ const sidebarLinks     = [
   {
     icon: <IconPayment></IconPayment>,
     title: "Payment",
-    url: "/payment",
+    url: "/checkout",
   },
   {
     icon: <IconWithdraw></IconWithdraw>,

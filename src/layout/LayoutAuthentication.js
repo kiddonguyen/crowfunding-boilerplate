@@ -1,11 +1,24 @@
 // Layout cho các phần tử được sử dụng trong những trang Authentication (Sign In, Sign Up)
 import ErrorComponent from "components/common/ErrorComponent";
 import PropTypes from "prop-types";
+import { useEffect } from "react";
 import { withErrorBoundary } from "react-error-boundary";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 const LayoutAuthentication = (props) => {
   // eslint-disable-next-line align-assignments/align-assignments
   const { children, heading = "" } = props;
+  const { user } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  useEffect(() => {
+    // check if user is already logged in, navigate them to homepage
+    if (user && user.email) {
+      navigate("/");
+    }
+  }, [user]);
+  if (user && user.email) {
+    return null;
+  }
   return (
     <div className="w-full min-h-screen bg-lite dark:bg-darkbg p-10 relative isolate">
       <img

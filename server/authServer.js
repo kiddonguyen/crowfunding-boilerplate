@@ -1,9 +1,8 @@
 /* eslint-disable no-process-env */
 require("dotenv").config();
-const jwt     = require("jsonwebtoken");
-const express = require("express");
-const app     = express();
-app.use(express.json());
+const jwt         = require("jsonwebtoken");
+const express     = require("express");
+const app         = express();
 const fs          = require("fs");
 const verifyToken = require("./middleware/auth");
 const rawdata     = fs.readFileSync("db.json");
@@ -11,6 +10,7 @@ const database    = JSON.parse(rawdata);
 let users         = database.users;
 const cors        = require("cors");
 const bcrypt      = require("bcrypt");
+app.use(express.json());
 app.use(cors());
 const generateTokens = (payload) => {
   const { id, name } = payload;
@@ -73,7 +73,6 @@ app.post("/auth/login", (req, res) => {
     res.json(tokens);
   });
 });
-
 app.post("/token", (req, res) => {
   const refreshToken = req.body.refreshToken;
   if (!refreshToken) {
@@ -95,7 +94,6 @@ app.post("/token", (req, res) => {
     res.sendStatus(403);
   }
 });
-
 app.post("/auth/register", (req, res) => {
   const { name, password, email, permissions } = req.body;
   const user                                   = users.find((user) => {
@@ -120,11 +118,9 @@ app.post("/auth/register", (req, res) => {
     res.sendStatus(201);
   });
 });
-
 app.delete("/logout", verifyToken, (req, res) => {
   const user = users.find((user) => user.id === req.userId);
   updateRefreshToken(user.name, "");
   res.sendStatus(204);
 });
-
 app.listen(5001, () => console.log("Server auth started on port 5001"));
